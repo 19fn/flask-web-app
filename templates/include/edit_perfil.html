@@ -1,0 +1,34 @@
+  <!-- Editar perfil -->
+  <div class="modal fade" id="perfil-{{person.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLongTitle">Editá Tus Datos Personales:</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="" method="post">
+            {{ perf.hidden_tag() }}
+            {{ perf.nombre(class="form-control", placeholder="Nombre") }}
+            <br>
+            {{ perf.apellido(class="form-control", placeholder="Apellido") }} 
+            <br>
+            {{ perf.telefono(class="form-control", placeholder="Telefono") }}
+            <br>
+            {{ perf.calle(class="form-control", placeholder="Calle") }}
+            <br>
+            {{ perf.altura(class="form-control", placeholder="Altura") }}
+            <br>
+            {{ perf.cp(class="form-control", placeholder="Código Postal") }}
+        </div>
+        <div class="modal-footer">
+          <input id="perf" name="perf" type="hidden" value="{{person.id}}">
+          {{ perf.submit(class="btn btn-primary") }}
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Volver</button>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
