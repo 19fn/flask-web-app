@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}Mapa de Entregas - Logística Sur{% endblock%}
+
+{% block nav %}
+<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #1e2969;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <b><a class="navbar-brand" href="/">Logística Sur</a></b>  
+    </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+            <li><a href="{{ url_for('home_page') }}">Inicio</a></li>
+            <li class="active"><a href="{{ url_for('map_page') }}">Mapa</a></li>
+            <li><a href="{{ url_for('enviar_page') }}">Enviar</a></li>
+            <li><a href="{{ url_for('contact_page') }}">Contacto</a></li>
+        </ul>
+        {% if current_user.is_authenticated %}
+              <ul class="nav navbar-nav navbar-right">
+                  <li class="nav-item"><a class="nav-link" href="{{ url_for('profile_page') }}"><span class="glyphicon glyphicon-user"></span> Mi Perfil</a></li>
+                  <li class="nav-item"><a class="nav-link" href="{{ url_for('mis_envios_page') }}"><span class="glyphicon glyphicon-map-marker"></span> Mis Envios</a></li>
+                  <li class="nav-item"><a class="nav-link" href="{{ url_for('logout_page')}}"><span class="glyphicon glyphicon-log-out"></span> Salir</a></li>
+              </ul>
+        {% else %}
+              <ul class="nav navbar-nav navbar-right">
+                  <li><a href="{{ url_for('login_page') }}"><span class="glyphicon glyphicon-log-in"></span> Ingresar</a></li>
+                  <li><a href="{{ url_for('register_page') }}"><span class="glyphicon glyphicon-user"></span> Registrarme</a></li>
+              </ul>
+        {% endif %}
+      </div>
+   </div>
+</nav>
+{% endblock %} 
+
+{% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12"><h2 style="background-color: #1e2969; color: white; text-align: center;"><span class="glyphicon glyphicon-globe"></span> Mapa de Entregas</h2></div>
+  </div>
+  <div class="embed">    
+    <embed class="embed-responsive-item" src="Static\pdf\Logistica-Sur-Mapa.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="100%" height="812px"/>
+  </div>
+  <br><br>  
+</div>
+{% endblock %}
