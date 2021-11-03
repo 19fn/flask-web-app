@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block title %}Mi Perfil - Logística Sur{% endblock %}
+
+{% block nav %}
+  <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #1e2969;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <b><a class="navbar-brand" href="/">Logística Sur</a></b>  
+      </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+              <li><a href="{{ url_for('home_page') }}">Inicio</a></li>
+              <li><a href="{{ url_for('map_page') }}">Mapa</a></li>
+              <li><a href="{{ url_for('enviar_page') }}">Enviar</a></li>
+              <li><a href="{{ url_for('contact_page') }}">Contacto</a></li>
+          </ul>
+          {% if current_user.is_authenticated %}
+              <ul class="nav navbar-nav navbar-right">
+                  <li class="nav-item active"><a class="nav-link" href="{{ url_for('profile_page') }}"><span class="glyphicon glyphicon-user"></span> Mi Perfil</a></li>
+                  <li class="nav-item"><a class="nav-link" href="{{ url_for('mis_envios_page') }}"><span class="glyphicon glyphicon-map-marker"></span> Mis Envios</a></li>
+                  <li class="nav-item"><a class="nav-link" href="{{ url_for('logout_page')}}"><span class="glyphicon glyphicon-log-out"></span> Salir</a></li>
+              </ul>
+          {% else %}
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{ url_for('login_page') }}"><span class="glyphicon glyphicon-log-in"></span> Ingresar</a></li>
+                <li><a href="{{ url_for('register_page') }}"><span class="glyphicon glyphicon-user"></span> Registrarme</a></li>
+            </ul>
+          {% endif %}
+        </div>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block body %}
+  <div class="container table-responsive">
+      <h2 style="background-color: #1e2969; text-align: center; color: white;">Mi Perfil</h2>
+    <table class="table table-bordered" style="background-color: #1e2969; color: white;">
+        <thead id="thead">
+              <tr>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Apellido</th>
+                  <th scope="col">Correo Electronico</th>
+                  <th scope="col">Telefono</th>
+                  <th scope="col">Calle</th>
+                  <th scope="col">Altura</th>
+                  <th scope="col">Codigo Postal</th>
+                  <th scope="col">Opciones</th>
+        </thead>
+        <tbody id="tbody">
+                {% for person in perfil %}
+                {% include "includes/edit_perfil.html" %}
+                  <tr>
+                      <td>{{ person.nombre }}</td>
+                      <td>{{ person.apellido }}</td>
+                      <td>{{ person.correo_electronico }}</td>
+                      <td>{{ person.telefono }}</td>
+                      <td>{{ person.calle }}</td>
+                      <td>{{ person.altura }}</td>
+                      <td>{{ person.cp }}</td>
+                      <td>
+                        <button type="button" class="btn btn-secondary" style="color: black;" data-toggle="modal" data-target="#perfil-{{person.id}}">Editar</button>
+                      </td>
+                  </tr>
+                {% endfor %}
+          </tbody>
+    </table>
+  </div>
+  <br><br><br>
+{% endblock %}

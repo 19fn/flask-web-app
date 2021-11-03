@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %} ¡Hola! Ingresá tu Correo Electronico y Contraseña {% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+{% block body %}
+  <body>
+    <div class="container">
+      <form action="" method="POST" id="login">
+        {{ form.hidden_tag()}}
+          <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4"><h3 style="color: white; background-color: #1e2969; text-align: center;">¡Hola! Ingresá tu correo electronico y contraseña</h3></div>
+          </div><br>
+          <div class="row">
+            <div class="col-sm-4"></div>
+              <div class="form-floating col-sm-4">
+                {{ form.email.label() }} <br>
+                {{ form.email(class="form-control col-sm-4", placeholder="nombre@ejemplo.com") }}
+              </div>
+          </div>
+          <br>
+          <div class="row">
+              <div class="col-sm-4"></div>
+              <div class="form-floating col-sm-4">
+                {{ form.password.label()}} <br>
+                {{ form.password(class="form-control col-sm-4", placeholder="Contraseña") }}
+              </div> 
+          </div>
+
+          <br>
+          <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="form-floating col-sm-4">
+              <a href="password_recovery.html" style="color: #000;">Olvidé mi Contraseña</a>
+              <br>
+              <a href="{{ url_for('register_page') }}" style="color: black;">¿No tengo una cuenta?</a>
+              <br> <br>
+              {{ form.submit(class="btn btn-primary btn-block", style="background-color: #1e2969") }}
+            </div> 
+          </div>
+      </form>
+    </div><br><br><br>
+  </body>
+{% endblock %}
