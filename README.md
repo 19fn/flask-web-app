@@ -1,2 +1,2 @@
 # flask-web
-Web completamente funcional para Logística Sur.
+Web completamente funcional con Flask.
