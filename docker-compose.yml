@@ -1,0 +1,41 @@
+# Version '3.8' only will work with a least of docker-compose version 1.29.0
+# You should change all the tags that have an 'CHANGE THIS' above.
+version: '3.8'
+services:
+        database:
+                image: mysql:8.0
+                container_name: mysql_db
+
+                # CHANGE THIS
+                environment:
+                        MYSQL_ROOT_PASSWORD: your-strong-root-password-here
+                        MYSQL_DATABASE: your-database-name-here
+                        MYSQL_USER: your-user-name-here
+                        MYSQL_PASSWORD: your-strong-user-password-here
+                ports:
+                        - "3306:3306"
+
+                restart: on-failure
+
+                volumes:
+                        - "/opt/mysql-db:/var/lib/mysql"
+
+                healthcheck:
+                        test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+                        interval: 30s
+                        timeout: 10s
+                        retries: 5
+        
+        website:
+                image: logisticasur-img:1.0
+                container_name: logisticasur_web
+                ports:
+                        - "80:8080"
+                restart: on-failure
+
+                # CHANGE THIS
+                command: ["python","/app/LogisticaSur/main.py"]
+
+                depends_on:
+                        database:
+                                condition: service_healthy
