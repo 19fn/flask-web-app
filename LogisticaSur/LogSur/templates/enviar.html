@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block title %}Realizar Envio - Logística Sur{% endblock %}
+
+{% block navbrand %}
+<b><a class="navbar-brand" href="/">LOGÍSTICA SUR</a></b>
+{% endblock%}
+
+{% block nav %}
+  <li><a href="{{ url_for('home_page') }}">Inicio</a></li>
+  <li><a href="{{ url_for('map_page') }}">Mapa</a></li>
+  <li><a href="{{ url_for('cotizacion') }}">Cotizar</a></li>
+  <li class="active"><a href="{{ url_for('enviar_page') }}">Enviar</a></li>
+  <li><a href="{{ url_for('contact_page') }}">Contacto</a></li>
+{% endblock %} 
+
+{% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12"><h1 style="color: #1e2969; text-align: center; font-weight: 900; margin-top: 5rem; font-size: 4rem;">COMPLETÁ CON TUS DATOS</h1></div>
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6"><h2 style="color: white; background-color: #1e2969; text-align: center; font-weight: 900;">REMITENTE</h2></div> 
+  </div>
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+      <form action="" method="POST">
+        {{ form.hidden_tag() }}
+        <br>
+        {{ form.nom_remitente.label() }}
+        {{ perf.nombre(class="form-control", placeholder="Nombre y Apellido del remitente") }}
+        <br>
+        {{ form.calle_remitente.label() }}
+        {{ perf.calle(class="form-control", placeholder="Domicilio del remitente") }}
+        <br>
+        {{ form.altura_remitente.label() }}
+        {{ perf.altura(class="form-control", placeholder="Altura del domicilio") }}
+        <br>
+        {{ form.tel_remitente.label() }}
+        {{ perf.telefono(class="form-control", placeholder="Telefono del remitente") }}
+        <br>
+        {{ form.t_servicio.label() }}
+        {{ form.t_servicio(class="form-control") }}
+        <br>
+        {{ form.t_pago.label() }}
+        {{ form.t_pago(class="form-control") }}
+        <br>
+        {{ form.info_remitente.label() }}
+        {{ form.info_remitente(class="form-control", rows="5", placeholder="Mensaje", style="resize: none") }}
+        <br>
+        <div class="row">
+          <div class="col-sm-12"><h2 style="color: white; background-color: #1e2969; text-align: center; font-weight: 900;">DESTINATARIO</h2></div> 
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <br>
+            {{ form.nom_destinatario.label() }}
+            {{ form.nom_destinatario(class="form-control", placeholder="Nombre y Apellido del destinatario") }}
+            <br>
+            {{ form.calle_destinatario.label() }}
+            {{ form.calle_destinatario(class="form-control", placeholder="Domicilio del destinatario") }}
+            <br>
+            {{ form.altura_destinatario.label() }}
+            {{ form.altura_destinatario(class="form-control", placeholder="Altura del domicilio") }}
+            <br>
+            {{ form.tel_destinatario.label() }}
+            {{ form.tel_destinatario(class="form-control", placeholder="Telefono del destinatario") }}
+            <br>
+            {{ form.info_destinatario.label() }}
+            {{ form.info_destinatario(class="form-control", rows="5", placeholder="Mensaje", style="resize: none") }}
+            <br>
+            <br>
+            <div class="col-sm-7">
+              <h4 style="color: #1e2969; text-align: center; font-weight: 600;">COMPLETA EL CAPTCHA</h4>
+              {{ form.recaptcha() }}
+              <br> <br>
+            </div>
+
+            
+            <br>
+            {{ form.submit(class="btn btn-primary btn-block", style="background-color: #1e2969") }}
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div><br><br>
+{% endblock %}

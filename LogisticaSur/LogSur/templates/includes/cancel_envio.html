@@ -1,0 +1,49 @@
+  <!-- Cancelar envio -->
+  <div class="modal fade" id="ModalCenter-{{ envio.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLongTitle">Envío para: {{ envio.nombre_apellido_des }}</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="" method="post">
+            {{ cancelar_envio.hidden_tag() }}
+            <h4 class="text-center">¿ Está seguro que desea cancelar el envío con Número de Identificación: {{ envio.id }} ?</h4>
+        </div>
+        <div class="modal-footer">
+          <input id="cancelar_envio" name="cancelar_envio" type="hidden" value="{{envio.id}}">
+          {{ cancelar_envio.submit(class="btn btn-success") }}
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Volver</button>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Borrar envio -->
+    <div class="modal fade" id="BorrarCenter-{{ envio.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLongTitle">Envío para: {{ envio.nombre_apellido_des }} (Estado: Cancelado) </h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="" method="post">
+              {{ c_envio.hidden_tag() }}
+              <h4 class="text-center">¿ Está seguro que desea borrar el envío con Número de Identificación: {{ envio.envio_id }} ?</h4>
+          </div>
+          <div class="modal-footer">
+            <input id="c_envio" name="c_envio" type="hidden" value="{{envio.id}}">
+            {{ c_envio.submit(class="btn btn-success") }}
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Volver</button>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>

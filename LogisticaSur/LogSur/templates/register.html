@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block title %}Registrate en Logística Sur{% endblock %}
+
+{% block navbrand %}
+<b><a class="navbar-brand" href="/">LOGÍSTICA SUR</a></b>
+{% endblock%}
+
+{% block nav %}
+  <li><a href="{{ url_for('home_page') }}">Inicio</a></li>
+  <li><a href="{{ url_for('map_page') }}">Mapa</a></li>
+  <li><a href="{{ url_for('cotizacion') }}">Cotizar</a></li>
+  <li><a href="{{ url_for('enviar_page') }}">Enviar</a></li>
+  <li><a href="{{ url_for('contact_page') }}">Contacto</a></li>
+{% endblock %}
+
+{% block body %}
+<body style="margin-top: 5rem;">
+  <div class="container" style="margin-bottom: 2rem; margin-top: 4rem;">
+    <div class="row">
+      <div class="col-sm-12">
+        <p style="font-weight: 900; font-size: 39px; text-align: center; color: #1e2969;">
+          PRIMERA VEZ EN LOGÍSTICA SUR.
+        </p>
+        <p style="font-weight: 900; font-size: 39px; text-align: center; color: #1e2969;">
+          COMENCEMOS.
+        </p>
+      </div> 
+    </div>
+    <div class="row">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-6" style="margin-top: 2rem;">
+        <p style="font-family: Arial; font-size: 25px; text-align: center;">
+          Ingrese su información de contacto o inicie sesión, si ya tiene una cuenta.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+      <form class="form-register" method="POST">
+          {{ form.hidden_tag() }}
+          <div class="form-outline mb-4">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6" style="background-color: rgb(236,236,236); padding: 6rem;">
+              {{ form.nombre.label() }}
+              {{ form.nombre(class="form-control", placeholder="Nombre") }}
+              <br>
+              {{ form.apellido.label() }}
+              {{ form.apellido(class="form-control", placeholder="Apellido") }}
+              <br>
+              {{ form.email.label() }}
+              {{ form.email(class="form-control", placeholder="Correo Electronico")}}
+              <br>
+              {{ form.password.label() }}
+              {{ form.password(class="form-control", placeholder="Contraseña") }}
+              <br>
+              {{ form.password_confirmation.label() }}
+              {{ form.password_confirmation(class="form-control", placeholder="Repetir Contraseña")}}
+              <br>
+              {{ form.telefono.label() }}
+              {{ form.telefono(class="form-control", placeholder="Teléfono")}}
+              <br>
+
+              <div class="form-check d-flex justify-content-center mb-4">
+                <label class="form-check-label">
+                  {{ form.acepto_terminos(class="form-check-input") }} {{ form.acepto_terminos.label() }} <a href="#">Terminos & Condiciones</a>  
+                </label>
+                <br>
+                <label for="">
+                  <a style="color: black;" href="{{ url_for('login_page') }}">Ya tengo una cuenta</a>
+                </label>
+              </div>
+
+              <br>
+              {{ form.submit(class="btn btn-primary btn-block", style="background-color: #1e2969") }}
+            </div>
+            <br>
+          </div>
+        </form>
+  </div>
+  <br><br>
+</body>
+{% endblock %}

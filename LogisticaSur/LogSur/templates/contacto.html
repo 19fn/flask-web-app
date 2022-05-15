@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block title %}Contacto - Logística Sur{% endblock%}
+
+{% block navbrand %}
+<b><a class="navbar-brand" href="/">LOGÍSTICA SUR</a></b>
+{% endblock%}
+
+{% block nav %}
+<li><a href="{{ url_for('home_page') }}">Inicio</a></li>
+<li><a href="{{ url_for('map_page') }}">Mapa</a></li>
+<li><a href="{{ url_for('cotizacion') }}">Cotizar</a></li>
+<li><a href="{{ url_for('enviar_page') }}">Enviar</a></li>
+<li class="active"><a href="{{ url_for('contact_page') }}">Contacto</a></li>
+{% endblock %} 
+
+{% block body %}
+<div class="container" style="margin-top: 5rem;"> 
+    <div class="row" style="background-color: rgb(236, 236, 236); padding: 5%;">
+      <div class="col-sm-3"><h2 style="color: #1e2969; font-weight: 900;">TELÉFONO</h2>
+        <p style="color: #1e2969;">
+          <span class="glyphicon glyphicon-earphone" style="color: #1e2969; font-size: 15px;"></span>
+           + 54 9 11 2491-7164
+        </p>
+        <p style="color: #1e2969;">
+          <span class="glyphicon glyphicon-earphone" style="color: #1e2969; font-size: 15px;"></span> 
+          + 54 9 11 3612-7331
+        </p>
+      </div>
+      <div class="col-sm-3"><h2 style="color: #1e2969; font-weight: 900;">EMAIL</h2>
+        <p style="color: #1e2969;">
+          <i class="fas fa-envelope mr-3" style="color: #1e2969; font-size: 15px;"></i>
+          <a href="mailto:logisticasuroficial@gmail.com" style="text-decoration: none; color: #1e2969;"> logisticasuroficial@gmail.com</a>
+        </p>
+      </div>
+      <div class="col-sm-3"><h2 style="color: #1e2969; font-weight: 900;">DIRECCIÓN</h2>
+        <p>
+          <i class="fas fa-home mr-3" style="color: #1e2969; font-size: 15px;"></i> <a href="https://goo.gl/maps/GG8W2HUBq8PzRNjJ7" title="Abrir en Google Maps" target="_blank" style="color: #1e2969; text-decoration: none;">Lebensohn 114, Bernal, Argentina.</a>
+        </p>
+      </div>
+
+      <div class="col-sm-3"><h2 style="color: #1e2969; font-weight: 900;">FORMULARIO</h2>
+        <p style="color: #1e2969;">
+          <i class="fas fa-list-alt"></i> Completá el siguiente formulario y nos pondremos en contacto.
+        </p>
+      </div>
+    </div>
+</div><br>
+<div class="container" style="background-color: rgb(236, 236, 236); padding: 5%">
+    <div class="col-sm-14"><h3 style="background-color: #1e2969; text-align: center; color: white;">Formulario de Contacto</h3></div>
+    <main>
+      <form action="" method="POST" id="contacto">
+        {{ form.hidden_tag() }}
+        <div class="row">
+          <div class="col-sm-4 form-outline">
+            <h4>¿Cómo te podemos ayudar?</h4>
+            {{ form.motivo(class="form-control") }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 form-outline">
+              <br>{{ form.nom_ape(class="form-control", placeholder="Nombre y Apellido")}}
+          </div>
+          <div class="col-sm-6 form-outline">
+            <br>{{ form.correo(class="form-control", placeholder="Correo Electronico")}}
+          </div>
+        </div>
+
+        <div class="form-outline mb-4">
+          <br>{{ form.msj(class="form-control", placeholder="Mensaje", rows="8", style="resize: none") }}
+        </div>
+        <br><br>{{form.submit(class="btn btn-primary btn-block mb-4", style="background-color: #1e2969")}}
+      </form>
+    </main>
+</div><br> <br>
+{% endblock %}

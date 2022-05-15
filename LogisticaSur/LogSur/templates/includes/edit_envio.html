@@ -1,0 +1,48 @@
+  <!-- Editar Envio -->
+  <div class="modal fade" id="perfil-{{ envio.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLongTitle">Editá tu Envio para: {{ envio.nombre_apellido_des }}</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="" method="post">
+            {{ edit_envio.hidden_tag() }}
+            <br>
+            {{ edit_envio.t_servicio.label() }}
+            {{ edit_envio.t_servicio(class="form-control") }}
+            <br>
+            {{ edit_envio.t_pago.label() }}
+            {{ edit_envio.t_pago(class="form-control") }}
+            <br>
+            {{ edit_envio.info_remitente.label() }}
+            {{ edit_envio.info_remitente(class="form-control", style="resize: none", placeholder="Información Adicional") }}
+            <br>
+            {{ edit_envio.nom_destinatario.label() }}
+            {{ edit_envio.nom_destinatario(class="form-control", placeholder="Nombre y Apellido") }}
+            <br>
+            {{ edit_envio.calle_destinatario.label() }}
+            {{ edit_envio.calle_destinatario(class="form-control", placeholder="Calle") }}
+            <br>
+            {{ edit_envio.altura_destinatario.label() }}
+            {{ edit_envio.altura_destinatario(class="form-control", placeholder="Altura") }}
+            <br>
+            {{ edit_envio.tel_destinatario.label() }}
+            {{ edit_envio.tel_destinatario(class="form-control", placeholder="Telefono") }}
+            <br>
+            {{ edit_envio.info_destinatario.label() }}
+            {{ edit_envio.info_destinatario(class="form-control", style="resize: none", placeholder="Información Adicional") }}
+
+        </div>
+        <div class="modal-footer">
+          <input id="envio" name="envio" type="hidden" value="{{envio.id}}">
+            {{ edit_envio.submit(class="btn btn-success") }}
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Volver</button>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>

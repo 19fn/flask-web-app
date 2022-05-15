@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block title %} Mis Envios - Logistíca Sur {% endblock %}
+
+{% block navbrand %}
+<b><a class="navbar-brand" href="/">LOGÍSTICA SUR</a></b>
+{% endblock%}
+
+{% block nav %}
+    <li><a href="{{ url_for('home_page') }}">Inicio</a></li>
+    <li><a href="{{ url_for('map_page') }}">Mapa</a></li>
+    <li><a href="{{ url_for('cotizacion') }}">Cotizar</a></li>
+    <li><a href="{{ url_for('enviar_page') }}">Enviar</a></li>
+    <li><a href="{{ url_for('contact_page') }}">Contacto</a></li>
+{% endblock %}
+
+{% block body %}
+<div class="jumbotron">
+    <div class="container text-center">
+      <a href="/inicio.html"><img src="/Static/img/banner.png" class="img-fluid" alt="Logística-Sur-Banner"></a>
+    </div>
+</div>
+
+    <div class="container">
+        <div class="table-responsive">
+            <h2 class="col-sm-12" style="background-color: lightsteelblue; color: black; text-align: center;">Mis Envíos</h2>
+            <table class="table table-bordered" style="background-color: lightsteelblue;">
+                <thead>
+                        <tr>
+                            <th scope="col">Número de Identificación</th>
+                            <th scope="col">Servicio</th>
+                            <th scope="col">Pago</th>
+                            <th scope="col">Información Remitente</th>
+                            <th scope="col">Nombre y Apellido Destinatario</th>
+                            <th scope="col">Calle Destinatario</th>
+                            <th scope="col">Altura Destinatario</th>
+                            <th scope="col">Telefono Destinatario</th>
+                            <th scope="col">Información Destinatario</th>
+                            <th scope="col">Fecha/Hora</th>
+                            <th scope="col" style="text-align: center;">Opciones</th>
+                        </tr>
+                </thead>
+                <tbody>
+                        {% for envio in envios %}
+                        {% include "includes/cancel_envio.html" %}
+                        {% include "includes/edit_envio.html" %}
+                            <tr>
+                                <td>{{ envio.id }}</td>
+                                <td>{{ envio.servicio }}</td>
+                                <td>{{ envio.pago }}</td>
+                                <td>{{ envio.info_rem }}</td>
+                                <td>{{ envio.nombre_apellido_des }}</td>
+                                <td>{{ envio.calle_des }}</td>
+                                <td>{{ envio.altura_des }}</td>
+                                <td>{{ envio.telefono_des }}</td>
+                                <td>{{ envio.info_des }}</td>
+                                <td>{{ envio.date_created }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-block" style="background-color: #1e2969; color: white; font: bold;" data-toggle="modal" data-target="#ModalCenter-{{ envio.id }}">Cancelar</button>
+                                    <button type="button" class="btn btn-block" style="background-color: #1e2969; color: white; font: bold;" data-toggle="modal" data-target="#perfil-{{ envio.id }}">Editar</button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

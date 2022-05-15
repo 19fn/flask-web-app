@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block title %}Cotizá tu Envio - Logística Sur{% endblock %}
+
+{% block navbrand %}
+<b><a class="navbar-brand" href="/">LOGÍSTICA SUR</a></b>
+{% endblock%}
+
+{% block nav %}
+  <li><a href="{{ url_for('home_page') }}">Inicio</a></li>
+  <li><a href="{{ url_for('map_page') }}">Mapa</a></li>
+  <li class="active"><a href="{{ url_for('cotizacion') }}">Cotizar</a></li>
+  <li><a href="{{ url_for('enviar_page') }}">Enviar</a></li>
+  <li><a href="{{ url_for('contact_page') }}">Contacto</a></li>
+{% endblock %} 
+
+{% block body %}
+<body class="text-center">
+  <div class="container" style="background-color: rgb(236, 236, 236);">
+      <div class="row">
+          <div class="col-sm-12">
+            <h1 style="color: #1e2969; text-align: center; font-weight: 900; font-size: 5rem; margin-top: 5rem; margin-bottom: 3rem;">
+              OBTENGA UNA COTIZACIÓN 
+              <i class="fas fa-calculator"></i>
+            </h1>
+            <p style="color: black; text-align: center; font-weight: 900; font-size: 3rem; margin-bottom: 2rem;">
+              COTIZÁ TU ENVIO AL INSTANTE.
+            </p>
+            <h1 style="color: #1e2969; font-weight: 900;">1.</h1>
+            <p style="color: black; text-align: center; font-weight: 900; font-size: 2rem;">
+              ELEGÍ UNA LOCALIDAD
+            </p>
+            <h1 style="color: #1e2969; font-weight: 900;">2.</h1>
+            <p style="color: black; text-align: center; font-weight: 900;; font-size: 2rem;">
+              ELEGÍ EL PESO 
+            </p>
+            <h1 style="color: #1e2969; font-weight: 900;">3.</h1>
+            <p style="color: black; text-align: center; font-weight: 900; font-size: 2rem;">
+              COTIZAR
+            </p>
+          </div>
+      </div>
+
+    <br>
+
+      <div class="row">
+          <div class="col-sm-3"></div>
+          <div class="col-sm-6">
+            <form action="" method="POST" style="background-color: white;border: 0.1px #1e2969 solid;padding: 5rem;">
+                {{ form.hidden_tag() }}
+                <br>
+                {{ form.localidad.label() }}
+                {{ form.localidad(class="form-control", style="font-size: 18px;") }}
+                <br>
+                {{ form.kilos.label() }}
+                {{ form.kilos(class="form-control", style="font-size: 18px;") }}
+                <br>
+                {% if form.precio | float > 0 %}
+                  <label for="">Cotización</label><br>
+                  <b><input class="form-control" type="text" value="AR$ {{ form.precio }}0" disabled style="font-size: 20px;"></b>
+                {% endif %}
+                <br>
+                {{ form.submit(class="btn btn-primary btn-block", style="background-color: #1e2969") }}
+                <br>
+            </form>
+          </div>
+      </div>
+
+    <br> <br>
+  </div>
+<br><br>
+</body>
+{% endblock %}

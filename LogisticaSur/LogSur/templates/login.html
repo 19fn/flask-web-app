@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block title %} ¡Hola! Ingresá tu Correo Electronico y Contraseña {% endblock %}
+
+{% block navbrand %}
+<b><a class="navbar-brand" href="/">LOGÍSTICA SUR</a></b>
+{% endblock%}
+
+{% block nav %}
+<li><a href="{{ url_for('home_page') }}">Inicio</a></li>
+<li><a href="{{ url_for('map_page') }}">Mapa</a></li>
+<li><a href="{{ url_for('cotizacion') }}">Cotizar</a></li>
+<li><a href="{{ url_for('enviar_page') }}">Enviar</a></li>
+<li><a href="{{ url_for('contact_page') }}">Contacto</a></li>
+{% endblock %}
+
+{% block body %}
+  <body style="margin-top: 5rem;">
+
+    <div class="container" style="margin-bottom: 2rem; margin-top: 4rem;">
+      <div class="row">
+        <div class="col-sm-12">
+          <p style="font-weight: 900; font-size: 35px; text-align: center; color: #1e2969;">
+            BIENVENIDO A LOGÍSTICA SUR.
+          </p>
+        </div> 
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <p style="font-family: Arial; font-size: 25px; text-align: center;">
+            Ingrese su correo electronico y contraseña.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <form action="" method="POST" id="login">
+        {{ form.hidden_tag()}}
+        <br>
+          <div class="row">
+            <div class="col-sm-3"></div>
+              <div class="form-floating col-sm-6" style="background-color: rgb(236, 236, 236); border: 1px rgb(200, 200, 200) solid; padding: 5rem;">
+                {{ form.email.label() }} <br>
+                {{ form.email(class="form-control", placeholder="nombre@ejemplo.com") }}
+                <br>
+                {{ form.password.label()}} <br>
+                {{ form.password(class="form-control", placeholder="Contraseña") }}
+                <br>
+                <label for="">
+                  <a href="password_recovery.html" style="color: #000;">Olvidé mi Contraseña</a>
+                </label>
+                <br>
+                <label for="">
+                  <a href="{{ url_for('register_page') }}" style="color: black;">¿No tengo una cuenta?</a>
+                </label>    
+                <br><br>
+                {{ form.submit(class="btn btn-primary btn-block", style="background-color: #1e2969") }}
+              </div>
+          </div>
+      </form>
+    </div><br><br><br>
+  </body>
+{% endblock %}

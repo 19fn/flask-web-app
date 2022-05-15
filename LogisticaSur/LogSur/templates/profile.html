@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block title %}Mi Perfil - Logística Sur{% endblock %}
+
+{% block navbrand %}
+<b><a class="navbar-brand" href="/">LOGÍSTICA SUR</a></b>
+{% endblock%}
+
+{% block nav %}
+<li><a href="{{ url_for('home_page') }}">Inicio</a></li>
+<li><a href="{{ url_for('map_page') }}">Mapa</a></li>
+<li><a href="{{ url_for('cotizacion') }}">Cotizar</a></li>
+<li><a href="{{ url_for('enviar_page') }}">Enviar</a></li>
+<li><a href="{{ url_for('contact_page') }}">Contacto</a></li>
+{% endblock %}
+
+{% block body %}
+  <div class="container table-responsive" style="margin-top: 5%;">
+      <h1 style="font-weight: 900; font-size: 50px; margin-bottom: 2rem;">PERFIL</h1>
+      <table class="table table-bordered" style="background-color: rgb(236, 236, 236);">
+        <thead id="thead">
+                <tr>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Apellido</th>
+                  <th scope="col">Correo Electronico</th>
+                  <th scope="col">Telefono</th>
+                  <th scope="col" style="text-align: center;">Opciones</th>
+                </tr>
+        </thead>
+        <tbody id="tbody">
+                {% for person in perfil %}
+                {% include "includes/edit_perfil.html" %}
+                  <tr>
+                      <td>{{ person.nombre }}</td>
+                      <td>{{ person.apellido }}</td>
+                      <td>{{ person.correo_electronico }}</td>
+                      <td>{{ person.telefono }}</td>
+                      <td>
+                        <button type="button" class="btn btn-primary btn-block" style="color: white;" data-toggle="modal" data-target="#perfil-{{person.id}}">Editar</button>
+                      </td>
+                  </tr>
+                {% endfor %}
+          </tbody>
+      </table>
+
+      <br>
+
+      <table class="table table-bordered" style="background-color: rgb(236, 236, 236);">
+        <thead id="thead">
+                <tr>
+                  <th scope="col">Calle</th>
+                  <th scope="col">Altura</th>
+                  <th scope="col">Codigo Postal</th>
+                </tr>
+        </thead>
+        <tbody id="tbody">
+                {% for person in perfil %}
+                {% include "includes/edit_perfil.html" %}
+                  <tr>
+                      <td>{{ person.calle }}</td>
+                      <td>{{ person.altura }}</td>
+                      <td>{{ person.cp }}</td>
+                  </tr>
+                {% endfor %}
+          </tbody>
+      </table>
+  </div>
+  <br><br><br>
+{% endblock %}

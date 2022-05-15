@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}Mapa de Entregas - Logística Sur{% endblock%}
+
+{% block navbrand %}
+<b><a class="navbar-brand" href="/">LOGÍSTICA SUR</a></b>
+{% endblock%}
+
+{% block nav %}
+  <li><a href="{{ url_for('home_page') }}">Inicio</a></li>
+  <li class="active"><a href="{{ url_for('map_page') }}">Mapa</a></li>
+  <li><a href="{{ url_for('cotizacion') }}">Cotizar</a></li>
+  <li><a href="{{ url_for('enviar_page') }}">Enviar</a></li>
+  <li><a href="{{ url_for('contact_page') }}">Contacto</a></li>
+{% endblock %} 
+
+{% block body %}
+<div class="container" style="margin-top: 1rem;">
+  <div class="row" style="background-color: rgb(236, 236, 236); padding: 1rem;">
+    <div class="col-sm-12"><h1 style="color: #1e2969; text-align: center; font-weight: 900; font-size: 5rem; margin-top: 5rem;"><i class="far fa-map" style="color: #1e2969; font-size: 70px;"></i> DÍAS Y ZONAS DE ENTREGAS</h1></div>
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6"><p style="color: black; text-align: center; font-size: 20px;font-style: italic; margin-top: 3rem; margin-bottom: 5rem; padding: 3rem;">"De lunes a viernes y sabados, nos repartimos por todas las zonas para poder alcanzar los objetivos de nuestros clientes. Recorriendo de manera estrategica todo el area metropolitana de Buenos Aires."</p></div>
+  </div>
+</div>
+<div class="container" style="background-color: rgb(236, 236, 236); padding: 5rem;">
+  <div class="embed">
+    <embed class="embed-responsive-item" src="Static\pdf\Logistica-Sur-Mapa.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="100%" height="812px"/>
+  </div>
+  <br><br>  
+</div>
+{% endblock %}
