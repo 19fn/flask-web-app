@@ -10,17 +10,15 @@ services:
                 environment:
                         MYSQL_ROOT_PASSWORD: your-strong-root-password-here
                         MYSQL_DATABASE: LogisticaSur
-                        MYSQL_USER: fcabrera
-                        MYSQL_PASSWORD: Brown.1087
+                        MYSQL_USER: admin
+                        MYSQL_PASSWORD: MyStrongPassword
                 ports:
                         - "3306:3306"
 
                 restart: on-failure
 
                 volumes:
-                        - "/opt/mysql-db:/var/lib/mysql"
-
-                command: [ "--default-authentication-plugin=mysql_native_password" ]
+                        - "/opt/mysqldb-logsur:/var/lib/mysql"
 
                 healthcheck:
                         test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
