@@ -9,7 +9,7 @@ from datetime import timedelta
 app = Flask(__name__, template_folder="templates", static_folder="Static")
 
 # Database
-app.config["SQLALCHEMY_DATABASE_URI"] = "root://root:root@root/root"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://Brown.1087:fcabrera@192.168.72.129/LogisticaSur"
 app.config["SECRET_KEY"] = "14fb3188089cdac6ba30ddcb"
 # reCAPTCHA
 app.config["RECAPTCHA_USE_SSL"] = False

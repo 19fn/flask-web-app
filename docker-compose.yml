@@ -9,9 +9,9 @@ services:
                 # CHANGE THIS
                 environment:
                         MYSQL_ROOT_PASSWORD: your-strong-root-password-here
-                        MYSQL_DATABASE: your-database-name-here
-                        MYSQL_USER: your-user-name-here
-                        MYSQL_PASSWORD: your-strong-user-password-here
+                        MYSQL_DATABASE: LogisticaSur
+                        MYSQL_USER: fcabrera
+                        MYSQL_PASSWORD: Brown.1087
                 ports:
                         - "3306:3306"
 
@@ -19,6 +19,8 @@ services:
 
                 volumes:
                         - "/opt/mysql-db:/var/lib/mysql"
+
+                command: [ "--default-authentication-plugin=mysql_native_password" ]
 
                 healthcheck:
                         test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
@@ -29,12 +31,13 @@ services:
         website:
                 image: logisticasur-img:1.0
                 container_name: logisticasur_web
+                
                 ports:
                         - "80:8080"
+                
                 restart: on-failure
 
-                # CHANGE THIS
-                command: ["python","/app/LogisticaSur/main.py"]
+                command: [ "python3", "app.py"]
 
                 depends_on:
                         database:

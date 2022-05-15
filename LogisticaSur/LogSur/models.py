@@ -78,3 +78,9 @@ class ZonaPrecio(db.Model):
     zona = db.Column(db.String(length=80), nullable=False)
     precio = db.Column(db.Float(), nullable=False)
     kilos = db.Column(db.Integer(), nullable=False)
+
+
+# In case user table doesn't exists already. Else remove it.
+#db.create_all()
+# This is needed to write the changes to database
+#db.session.commit()
