@@ -1,17 +1,15 @@
 # Version '3.8' only will work with a least of docker-compose version 1.29.0
-# You should change all the tags that have an 'CHANGE THIS' above.
 version: '3.8'
 services:
         database:
                 image: mysql:8.0
                 container_name: mysql_db
 
-                # CHANGE THIS
                 environment:
-                        MYSQL_ROOT_PASSWORD: your-strong-root-password-here
+                        MYSQL_ROOT_PASSWORD: LogisticaSurRoot2021
                         MYSQL_DATABASE: LogisticaSur
                         MYSQL_USER: admin
-                        MYSQL_PASSWORD: MyStrongPassword
+                        MYSQL_PASSWORD: LogisticaSur2021
                 ports:
                         - "3306:3306"
 
@@ -35,7 +33,7 @@ services:
                 
                 restart: on-failure
 
-                command: [ "python3", "app.py"]
+                command: [ "python3", "app.py" ]
 
                 depends_on:
                         database:

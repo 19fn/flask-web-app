@@ -81,6 +81,6 @@ class ZonaPrecio(db.Model):
 
 
 # In case user table doesn't exists already. Else remove it.
-#db.create_all()
+db.create_all()
 # This is needed to write the changes to database
-#db.session.commit()
+db.session.commit()

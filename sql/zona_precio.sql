@@ -1,11 +1,5 @@
 USE LogisticaSur;
 
-CREATE TABLE zona_precio (
-    zona varchar(255),
-    precio float,
-    kilos int
-);
-
 # 5 KG
 insert into zona_precio (zona,precio,kilos) values ("caba","450","5");
 insert into zona_precio (zona,precio,kilos) values ("quilmes","300","5");
@@ -221,5 +215,3 @@ insert into zona_precio (zona,precio,kilos) values ("escobar","1600","50");
 insert into zona_precio (zona,precio,kilos) values ("campana","2000","50");
 insert into zona_precio (zona,precio,kilos) values ("zarate","2000","50");
 insert into zona_precio (zona,precio,kilos) values ("lujan","2000","50");
-
-SELECT * FROM zona_precio;
