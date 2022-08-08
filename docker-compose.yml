@@ -1,9 +1,9 @@
 # Version '3.8' only will work with a least of docker-compose version 1.29.0
 version: '3.8'
 services:
-        database:
+        mysql:
                 image: mysql:8.0
-                container_name: mysql_db
+                container_name: mysql
 
                 environment:
                         MYSQL_ROOT_PASSWORD: LogisticaSurRoot2021
@@ -24,17 +24,11 @@ services:
                         timeout: 10s
                         retries: 5
         
-        website:
+        flask:
                 image: logisticasur-img:1.0
-                container_name: logisticasur_web
+                container_name: website
                 
                 ports:
                         - "80:8080"
                 
                 restart: on-failure
-
-                command: [ "python3", "app.py" ]
-
-                depends_on:
-                        database:
-                                condition: service_healthy
